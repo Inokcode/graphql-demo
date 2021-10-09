@@ -4,7 +4,7 @@ const UserList = [
     name: 'John',
     username: 'john',
     age: 20,
-    nationality: null,
+    nationality: 'CANADA',
     friends: [
       {
         id: 2,
