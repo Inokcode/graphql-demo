@@ -33,4 +33,13 @@ const typeDefs = gql`
   }
 `;
 
+// enum Nationality {
+//     CANADA
+//     BRAZIL
+//     INDIA
+//     GERMANY
+//     CHILE
+//     UKRAINE
+//   }
+
 module.exports = { typeDefs };
