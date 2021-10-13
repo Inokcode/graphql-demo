@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import DisplayData from './DisplayData';
 
 function App() {
   const client = new ApolloClient({
@@ -10,7 +10,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <h1>List of Users</h1>
+        <DisplayData />
       </div>
     </ApolloProvider>
   );
