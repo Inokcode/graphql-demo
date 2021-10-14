@@ -48,7 +48,7 @@ const DisplayData = () => {
     console.log(error);
   }
   if (movieError) {
-    console.log(movieError.message);
+    console.log(movieError);
   }
   return (
     <div>
@@ -90,6 +90,7 @@ const DisplayData = () => {
               </h3>
             </div>
           )}
+          {movieError && <h1> There was an error fetching the data </h1>}
         </div>
       </div>
     </div>
