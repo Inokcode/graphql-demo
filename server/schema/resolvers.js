@@ -8,10 +8,16 @@ const resolvers = {
     // users() {
     //   return UserList;
     // },
-    users: () => {
-      return UserList;
+    users: (parent, args, context, info) => {
+      // console.log(parent);
+      // console.log(context);
+      // console.log(info);
+
+      // return UserList;
+      if (UserList) return { users: UserList };
+      return { message: 'Yo,there was an error' };
     },
-    user: (parent, args) => {
+    user: (parent, args, context, info) => {
       const id = args.id;
       const user = _.find(UserList, { id: Number(id) }); //convert string into number
       return user;
@@ -27,7 +33,8 @@ const resolvers = {
     },
   },
   User: {
-    favoriteMovies: () => {
+    favoriteMovies: (parent) => {
+      // console.log(parent);
       return _.filter(
         MovieList,
         (movie) =>
@@ -58,6 +65,17 @@ const resolvers = {
     deleteUser: (parent, args) => {
       const id = args.id;
       _.remove(UserList, (user) => user.id === Number(id));
+      return null;
+    },
+  },
+  UsersResult: {
+    __resolveType(obj) {
+      if (obj.users) {
+        return 'UserSuccessfulResult';
+      }
+      if (obj.message) {
+        return 'UsersErrorResult';
+      }
       return null;
     },
   },
